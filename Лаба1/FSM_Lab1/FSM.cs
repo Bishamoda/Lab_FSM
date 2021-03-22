@@ -8,18 +8,18 @@ namespace FSM_Lab1
 {
     public class FSM
     {
-        public enum State {b1, b2, b3, b4, b5 }; //состояния - b
-        public enum Inputs { z1, z2, z3, z4 }; //входы -z
-        public enum Exits { w1, w2, w3, w4, No}; //выходы - w, No - когда в таблице прочерк и выходной функции нет
+        private int _w = 0;
 
-
-        public State firstState = State.b1; //начальное состояние
-        public State activeState = State.b1; //текущее состояние
-        public Exits successW = Exits.No; //текущий выход - выхода нет
-
+        public enum State {b1, b2, b3, b4, b5 }; 
+        public enum Inputs { z1, z2, z3, z4 }; 
         
 
-        //Случайное состояние, где прочерк!
+        public State firstState = State.b1; 
+        public State activeState = State.b1;
+
+        int successW = 0;
+
+
         private State NoState()
         {
             Array value = Enum.GetValues(typeof(State));
@@ -27,9 +27,39 @@ namespace FSM_Lab1
 
             return (State)value.GetValue(rnd.Next(value.Length));
         }
- 
-        //Воздествие входов
-        public Exits Activity(Inputs activeInput)
+
+        public int w1()
+        {
+            _w = 1;
+            return _w;
+        }
+
+        public int w2()
+        {
+            _w = 2;
+            return _w;
+        }
+
+        public int w3()
+        {
+            _w = 3;
+            return _w;
+        }
+
+        public int w4()
+        {
+            _w = 4;
+            return _w;
+        }
+
+        public int NoW()
+        {
+            _w = 0;
+            return _w;
+        }
+
+
+        public int  Activity(Inputs activeInput)
         {
 
             switch (activeState)
@@ -39,22 +69,22 @@ namespace FSM_Lab1
                     {
                         case Inputs.z1:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z2:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z3:
                             activeState = State.b4;
-                            successW = Exits.w4;
+                            successW = w4();
                             break;
 
                         case Inputs.z4:
                             activeState = NoState();
-                            successW = Exits.No; ;
+                            successW = NoW();
                             break;
                     }
                     break;
@@ -64,22 +94,22 @@ namespace FSM_Lab1
                     {
                         case Inputs.z1:
                             activeState = State.b2;
-                            successW = Exits.w1;
+                            successW = w1();
                             break;
 
                         case Inputs.z2:
                             activeState = State.b2;
-                            successW = Exits.w1;
+                            successW = w1();
                             break;
 
                         case Inputs.z3:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z4:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
                     }
                     break;
@@ -89,22 +119,22 @@ namespace FSM_Lab1
                     {
                         case Inputs.z1:
                             activeState = State.b1;
-                            successW = Exits.w1;
+                            successW = w1();
                             break;
 
                         case Inputs.z2:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z3:
                             activeState = State.b2;
-                            successW = Exits.w2;
+                            successW = w2();
                             break;
 
                         case Inputs.z4:
                             activeState = State.b5;
-                            successW = Exits.w4;
+                            successW = w4();
                             break;
                     }
                     break;
@@ -114,22 +144,22 @@ namespace FSM_Lab1
                     {
                         case Inputs.z1:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z2:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z3:
                             activeState = State.b5;
-                            successW = Exits.w1;
+                            successW = w1();
                             break;
 
                         case Inputs.z4:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
                     }
                     break;
@@ -139,22 +169,22 @@ namespace FSM_Lab1
                     {
                         case Inputs.z1:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z2:
                             activeState = State.b1;
-                            successW = Exits.w1;
+                            successW = w1();
                             break;
 
                         case Inputs.z3:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
 
                         case Inputs.z4:
                             activeState = NoState();
-                            successW = Exits.No;
+                            successW = NoW();
                             break;
                     }
                     break;

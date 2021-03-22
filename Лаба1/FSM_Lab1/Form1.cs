@@ -12,7 +12,7 @@ namespace FSM_Lab1
 {
     public partial class Form1 : Form
     {
-        FSM fsm; //создаем тут, чтоб можно было использовать в методах
+        FSM fsm; 
 
         
         public Form1()
@@ -20,52 +20,7 @@ namespace FSM_Lab1
             InitializeComponent();
             fsm = new FSM();
             txt_StartState.Text = fsm.firstState.ToString();
-        }
-
-        private void NewW(FSM.Exits WSuccess)
-        {
             txt_CurrentState.Text = fsm.activeState.ToString();
-
-            if (WSuccess == FSM.Exits.w1)
-            {
-                w1.Checked = true;
-                w2.Checked = false;
-                w3.Checked = false;
-                w4.Checked = false;
-            }
-
-            if (WSuccess == FSM.Exits.w2)
-            {
-                w1.Checked = false;
-                w2.Checked = true;
-                w3.Checked = false;
-                w4.Checked = false;
-            }
-
-            if (WSuccess == FSM.Exits.w3)
-            {
-                w1.Checked = false;
-                w2.Checked = false;
-                w3.Checked = true;
-                w4.Checked = false;
-            }
-
-            if (WSuccess == FSM.Exits.w4)
-            {
-                w1.Checked = false;
-                w2.Checked = false;
-                w3.Checked = false;
-                w4.Checked = true;
-            }
-
-            if (WSuccess == FSM.Exits.No)
-            {
-                w1.Checked = false;
-                w2.Checked = false;
-                w3.Checked = false;
-                w4.Checked = false;
-            }
-
         }
 
         private void btn_z1_Click(object sender, EventArgs e)
@@ -92,11 +47,61 @@ namespace FSM_Lab1
         {
             fsm.activeState = fsm.firstState;
             txt_CurrentState.Clear();
-            
-            w1.Checked = false;
-            w2.Checked = false;
-            w3.Checked = false;
-            w4.Checked = false;
+            txt_CurrentState.Text = fsm.activeState.ToString();
+
+            pictureBox_w1.BackColor = DefaultBackColor;
+            pictureBox_w2.BackColor = DefaultBackColor;
+            pictureBox_w3.BackColor = DefaultBackColor;
+            pictureBox_w4.BackColor = DefaultBackColor;
+
+        }
+
+        private void NewW(int WSuccess)
+        {
+            txt_CurrentState.Text = fsm.activeState.ToString();
+
+            if (WSuccess == 1)
+            {
+                pictureBox_w1.BackColor = Color.Yellow;
+                pictureBox_w2.BackColor = DefaultBackColor;
+                pictureBox_w3.BackColor = DefaultBackColor;
+                pictureBox_w4.BackColor = DefaultBackColor;
+            }
+
+            if (WSuccess == 2)
+            {
+                pictureBox_w1.BackColor = DefaultBackColor;
+                pictureBox_w2.BackColor = Color.Yellow;
+                pictureBox_w3.BackColor = DefaultBackColor;
+                pictureBox_w4.BackColor = DefaultBackColor;
+
+            }
+
+            if (WSuccess == 3)
+            {
+                pictureBox_w1.BackColor = DefaultBackColor;
+                pictureBox_w2.BackColor = DefaultBackColor;
+                pictureBox_w3.BackColor = Color.Yellow;
+                pictureBox_w4.BackColor = DefaultBackColor;
+
+            }
+
+            if (WSuccess == 4)
+            {
+                pictureBox_w1.BackColor = DefaultBackColor;
+                pictureBox_w2.BackColor = DefaultBackColor;
+                pictureBox_w3.BackColor = DefaultBackColor;
+                pictureBox_w4.BackColor = Color.Yellow;
+
+            }
+
+            if (WSuccess == 0)
+            {
+                pictureBox_w1.BackColor = DefaultBackColor;
+                pictureBox_w2.BackColor = DefaultBackColor;
+                pictureBox_w3.BackColor = DefaultBackColor;
+                pictureBox_w4.BackColor = DefaultBackColor;
+            }
 
         }
     }
